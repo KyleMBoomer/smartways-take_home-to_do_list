@@ -35,7 +35,17 @@ const App: React.FC = () => {
     })
   }
 
-  const moveToCompleted = (task: Task) => {
+  const moveToCompleted = (task: Task, day:string) => {
+    setTasks((prev) => {
+      const updatedTasks = {...prev }
+      
+      updatedTasks[day] = updatedTasks[day].filter((t) => t !== task)
+
+      if(updatedTasks[day].length === 0) {
+        delete updatedTasks[day]
+      }
+      return updatedTasks 
+    })
     setCompletedTasks((prev) => [...prev, task])
   }
 

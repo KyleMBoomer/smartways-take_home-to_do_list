@@ -5,14 +5,14 @@ interface Task {
 
 interface TaskBoardProps {
     tasks: { [day: string]: Task[] }
-    moveToCompleted: (task: Task) => void
+    moveToCompleted: (task: Task, day:string) => void
 }
 
 const TaskBoard: React.FC<TaskBoardProps> = ({ tasks, moveToCompleted }) => {
 
     const handleComplete = (day: string, taskIndex: number) => {
         const completedTask = tasks[day][taskIndex]
-        moveToCompleted(completedTask)
+        moveToCompleted(completedTask, day)
     }
 
     return (
