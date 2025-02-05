@@ -11,7 +11,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        if (!TaskForm) return
+        if (!task.trim()) return
         addTask(task, day, time)
         setTask('')
     }
@@ -27,12 +27,12 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
             />
             <select value={day} onChange={(e) => setDay(e.target.value)}>
                 {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((d) => (
-                    <option key={id} value={d}>
+                    <option key={d} value={d}>
                         {d}
                     </option>
                 ))}
             </select>
-            <input type='time' value={time} onChange={(e) => setTimeout(e.target.value)} required />
+            <input type='time' value={time} onChange={(e) => setTime(e.target.value)} required />
             <button type='submit'>Add Task</button>
         </form>
     )
