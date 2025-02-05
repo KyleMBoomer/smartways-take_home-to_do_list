@@ -7,7 +7,7 @@ interface TaskFormProps {
 const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
     const [task, setTask] = useState('')
     const [day, setDay] = useState('Monday')
-    const [time, setTime] = useState('8:00')
+    const [time, setTime] = useState('20:00')
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()

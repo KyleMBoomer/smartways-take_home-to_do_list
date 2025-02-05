@@ -6,28 +6,11 @@ interface Task {
 }
 
 interface CompletedTaskProps {
+    completedTasks: Task[]
     reassignTask: (task: Task) => void
 }
 
-const CompletedTasks: React.FC<CompletedTaskProps> = ({ reassignTask }) => {
-    const [completedTasks, setCompletedTasks] = useState<Task[]>([])
-
-    useEffect(() => {
-        const savedCompletedTasks = localStorage.getItem('completedTasks')
-        if (savedCompletedTasks) {
-            setCompletedTasks(JSON.parse(savedCompletedTasks))
-        }
-    }, [])
-
-    useEffect(() => {
-        localStorage.setItem('completedTasks', JSON.stringify(completedTasks))
-    }, [completedTasks])
-
-    const handleReassign = (taskIndex: number) => {
-        const taskToReassign = completedTasks[taskIndex]
-        setCompletedTasks((prev) => prev.filter((_, index) => index !== taskIndex))
-        reassignTask(taskToReassign)
-    }
+const CompletedTasks: React.FC<CompletedTaskProps> = ({ completedTasks, reassignTask }) => {
 
     return (
         <div className='completed-tasks'>
@@ -39,7 +22,7 @@ const CompletedTasks: React.FC<CompletedTaskProps> = ({ reassignTask }) => {
                     {completedTasks.map((task, index) => (
                         <li key={index}>
                             <span>{task.time} - {task.name}</span>
-                            <button onClick={() => handleReassign(index)}>Re-assign</button>
+                            <button onClick={() => reassignTask(task)}>Re-assign</button>
                         </li>
                     ))}
                 </ul>
