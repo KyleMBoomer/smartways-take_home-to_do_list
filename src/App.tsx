@@ -35,16 +35,16 @@ const App: React.FC = () => {
     })
   }
 
-  const moveToCompleted = (task: Task, day:string) => {
+  const moveToCompleted = (task: Task, day: string) => {
     setTasks((prev) => {
-      const updatedTasks = {...prev }
-      
+      const updatedTasks = { ...prev }
+
       updatedTasks[day] = updatedTasks[day].filter((t) => t !== task)
 
-      if(updatedTasks[day].length === 0) {
+      if (updatedTasks[day].length === 0) {
         delete updatedTasks[day]
       }
-      return updatedTasks 
+      return updatedTasks
     })
     setCompletedTasks((prev) => [...prev, task])
   }
@@ -64,16 +64,25 @@ const App: React.FC = () => {
     setIsModalOpen(false)
   }
 
+  const clearCompletedTasks = () => {
+    setCompletedTasks([])
+    localStorage.removeItem('completedTasks')
+  }
 
-return (
-  <div className='app-container'>
-    <h1>To-Do List App</h1>
-    <TaskForm addTask={addTask} />
-    <TaskBoard tasks={tasks} moveToCompleted={moveToCompleted} />
-    <CompletedTasks completedTasks={completedTasks} reassignTask={openReassignModal} />
-    <ReassignModal task={modalTask} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onReassign={reassignTask} />
-  </div>
-)
+
+  return (
+    <div className='app-container'>
+      <h1>To-Do List App</h1>
+      <div className='component-container'>
+        <TaskForm addTask={addTask} />
+        <CompletedTasks completedTasks={completedTasks} reassignTask={openReassignModal} clearCompletedTasks={clearCompletedTasks} />
+        </div>
+        <ReassignModal task={modalTask} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onReassign={reassignTask} />
+        <div className='taskboard-container'>
+          <TaskBoard tasks={tasks} moveToCompleted={moveToCompleted} />
+      </div>
+    </div>
+  )
 
 }
 
