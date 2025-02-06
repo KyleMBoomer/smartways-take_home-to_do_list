@@ -26,7 +26,7 @@ const TaskBoard: React.FC<TaskBoardProps> = ({ tasks, moveToCompleted }) => {
                             <li key={index}>
                                 <span>{task.time} - {task.name}</span>
                                 <input
-                                    type='checkbox'
+                                    type='checkbox' aria-label="checkbox"
                                     onChange={() => handleComplete(day, index)}
                                 />
                             </li>

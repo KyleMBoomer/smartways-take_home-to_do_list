@@ -35,15 +35,15 @@ const ReassignModal: React.FC<ReassignModalProps> = ({ task, isOpen, onClose, on
                     <p>Task: {task.name}</p>
                     <label>
                         Select Day:
-                        <select value={newDay} onChange={(e) => setNewDay(e.target.value)}>
+                        <select value={newDay} onChange={(e) => setNewDay(e.target.value)} required >
                             {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day) => (
                                 <option key={day} value={day}>{day}</option>
-                            ))}
+                            ))} 
                         </select>
                     </label>
                     <label>
                         Select Time:
-                        <input type='time' value={newTime} onChange={(e) => setNewTime(e.target.value)} />
+                        <input type='time' value={newTime} onChange={(e) => setNewTime(e.target.value)} required/>
                     </label>
                     <div className='modal-buttons'>
                         <button type='submit'>Reassign</button>

@@ -14,7 +14,7 @@ interface CompletedTaskProps {
 const CompletedTasks: React.FC<CompletedTaskProps> = ({ completedTasks, reassignTask, clearCompletedTasks }) => {
     return (
         <div className='completed-tasks'>
-            <h3>Completed Tasks</h3>
+            <h2>Completed Tasks</h2>
             {completedTasks.length === 0 ? (
                 <p>No completed tasks... yet!</p>
             ) : (

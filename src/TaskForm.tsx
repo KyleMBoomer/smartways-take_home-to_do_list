@@ -26,14 +26,14 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
                     onChange={(e) => setTask(e.target.value)}
                     required
                 />
-                <select value={day} onChange={(e) => setDay(e.target.value)}>
+                <select value={day} aria-label='day-select' onChange={(e) => setDay(e.target.value)}>
                     {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((d) => (
                         <option key={d} value={d}>
                             {d}
                         </option>
                     ))}
                 </select>
-                <input type='time' value={time} onChange={(e) => setTime(e.target.value)} required />
+                <input type='time' aria-label='time input' value={time} onChange={(e) => setTime(e.target.value)} required />
                 <button type='submit'>Add Task</button>
             </form>
         </div>
