@@ -69,13 +69,12 @@ const App: React.FC = () => {
     <div className='app-container'>
       <h1>To-Do List App</h1>
       <div className='component-container'>
-
         <TaskForm addTask={addTask} />
         <CompletedTasks completedTasks={completedTasks} reassignTask={openReassignModal} />
         <ReassignModal task={modalTask} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onReassign={reassignTask} />
+        </div>
         <div className='taskboard-container'>
           <TaskBoard tasks={tasks} moveToCompleted={moveToCompleted} />
-        </div>
       </div>
     </div>
   )
