@@ -22,7 +22,7 @@ const CompletedTasks: React.FC<CompletedTaskProps> = ({ completedTasks, reassign
                     {completedTasks.map((task, index) => (
                         <li key={index}>
                             <span>{task.time} - {task.name}</span>
-                            <button onClick={() => reassignTask(task)}>Re-assign?</button>
+                            <button onClick={() => reassignTask(task)}>Schedule Again?</button>
                         </li>
                     ))}
                 </ul>

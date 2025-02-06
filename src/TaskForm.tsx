@@ -17,24 +17,26 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className='task-form'>
-            <input
-                type='text'
-                placeholder="What would you like to do?"
-                value={task}
-                onChange={(e) => setTask(e.target.value)}
-                required
-            />
-            <select value={day} onChange={(e) => setDay(e.target.value)}>
-                {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((d) => (
-                    <option key={d} value={d}>
-                        {d}
-                    </option>
-                ))}
-            </select>
-            <input type='time' value={time} onChange={(e) => setTime(e.target.value)} required />
-            <button type='submit'>Add Task</button>
-        </form>
+        <div className='form-container'>
+            <form onSubmit={handleSubmit} className='task-form'>
+                <input
+                    type='text'
+                    placeholder="What would you like to do?"
+                    value={task}
+                    onChange={(e) => setTask(e.target.value)}
+                    required
+                />
+                <select value={day} onChange={(e) => setDay(e.target.value)}>
+                    {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((d) => (
+                        <option key={d} value={d}>
+                            {d}
+                        </option>
+                    ))}
+                </select>
+                <input type='time' value={time} onChange={(e) => setTime(e.target.value)} required />
+                <button type='submit'>Add Task</button>
+            </form>
+        </div>
     )
 }
 
